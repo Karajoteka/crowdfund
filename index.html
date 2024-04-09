@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-32x32.png" />
+    <title>Crowdfund</title>
+  </head>
+  <body >
+    <header class="h-72 flex items-center justify-center w-full">
+      <img class="z-20 absolute top-6 left-6 w-32 lg:left-32 lg:top-10" src="./images/logo.svg" alt="Logo Crowdfund">
+      <img id="icon-hamburger" class="absolute top-6 right-6 w-5 lg:hidden" src="./images/icon-hamburger.svg" alt="Menu">
+
+      <menu-component class="z-20"></menu-component>
+      <img id="icon-close" class="z-20 hidden absolute top-6 right-6 w-4 lg:hidden" src="./images/icon-close-menu.svg" alt="Close menu">
+
+      <nav class="hidden lg:block absolute top-10 right-32 text-sm">
+        <ul class="flex space-x-8 text-white">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Discover</a></li>
+          <li><a href="#">Get Started</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <project-description
+      logo="./images/logo-mastercraft.svg"
+      title="Mastercraft Bamboo Monitor Riser"
+      description="A beautiful & handcrafted monitor stand to reduce neck and eye strain."
+    ></project-description>
+
+    <product-data
+      backed="$89,914"
+      max="100000"
+      backers="5,007"
+      days="56"
+    ></product-data>
+    
+    <about-project
+      description="The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve your posture and make you more comfortable while at work, helping you stay focused on the task at hand.<br><br>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand."
+    ></about-project>
+    
+    <div id="overlay" class="hidden fixed inset-0 bg-gradient-to-b from-black to-transparent bg-opacity-50 z-10"></div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
