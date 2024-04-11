@@ -10,10 +10,10 @@ class rewardComponent extends HTMLElement {
     if (oldVal === newVal) {
       return;
     }
-    if (attr === "title") {
+    if (attr === "title" && oldVal !== newVal) {
       this.title = newVal;
     }
-    if (attr === "pledge" && oldVal !== newVal) {
+    if (attr === "pledge") {
         this.pledge = newVal;
     }
     if (attr === "description") {
@@ -28,7 +28,7 @@ class rewardComponent extends HTMLElement {
     const sectionClass = this.rewards === '0' ? 'no-rewards' : '';
     const buttonClass = this.rewards === '0' ? 'button-no-rewards' : '';
     const buttonText = this.rewards === '0' ? 'Out of Stock' : 'Select Reward';
-    template.innerHTML= `
+    template.innerHTML = `
       <section class="${sectionClass}">
         <div class="title-container">
           <h3>${this.title}</h3>
@@ -57,7 +57,7 @@ class rewardComponent extends HTMLElement {
           margin-bottom: 30px;
           padding: 0 20px;
           box-sizing: border-box;
-          border: 1px solid var(--dark-grey);
+          border: 2px solid rgba(169, 169, 169, 0.3);
           border-radius: 8px;
           font-size: 0.8rem;
         }
