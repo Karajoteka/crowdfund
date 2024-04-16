@@ -30,7 +30,6 @@ class projectDescription extends HTMLElement {
             <img class="marker" src="./images/icon-bookmark.svg" alt="Bookmark button">
             <div class="bookmark-button">Bookmark</div>
           </div>
-          
         </div>
       </section>
       ${this.getStyles()}

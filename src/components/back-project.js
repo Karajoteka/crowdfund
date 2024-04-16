@@ -14,10 +14,10 @@ class backProject extends HTMLElement {
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = `
-      <section>
+      <section id="back-project-modal">
         <div class="title-container">
           <h2>Back this project</h2>
-          <img src="/images/icon-close-modal.svg" alt="Close modal">
+          <img id="close-modal-icon" src="/images/icon-close-modal.svg" alt="Close modal">
         </div>
         <p>Want to support us in bringing ${this.project} out in the world?</p>
         <pledge-with-no-reward></pledge-with-no-reward>
@@ -49,21 +49,29 @@ class backProject extends HTMLElement {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
 
-        section {
-          position: relative;
-          top: -16;
+        #back-project-modal {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -36%);
+          z-index: 1000;
+          max-height: 80vh;
+          overflow-y: auto;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
           width: 86%;
           height: auto;
           background-color: white;
-          margin: auto;
-          margin-bottom: 80px;
-          display: flex;
-          flex-direction: column;
           padding: 0 20px;
           box-sizing: border-box;
           border-radius: 8px;
           box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
           text-align: left;
+        }
+
+        #back-project-modal::-webkit-scrollbar {
+          display: none;
         }
 
         .title-container {
@@ -90,7 +98,7 @@ class backProject extends HTMLElement {
         }
 
         @media (min-width: 675px) {
-          section {
+          #back-project-modal {
             max-width: 600px;
             padding: 0 30px;
           }

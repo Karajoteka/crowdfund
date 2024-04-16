@@ -350,6 +350,12 @@ class rewardComponentInModal extends HTMLElement {
         hr.style.visibility = isActive ? 'visible' : 'hidden';
         hr.style.height = isActive ? 'auto' : '0';
         section.classList.toggle('active-border', isActive);
+
+        this.dispatchEvent(new CustomEvent('checkbox-clicked', {
+          detail: { checkbox: checkbox },
+          bubbles: true,
+          composed: true
+        }));
       }
     });
 

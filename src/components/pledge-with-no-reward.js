@@ -114,6 +114,12 @@ class pledgeWithNoReward extends HTMLElement {
     checkbox.addEventListener('click', function() {
       this.classList.toggle('active');
       section.classList.toggle('active-border', this.classList.contains('active'));
+
+      this.dispatchEvent(new CustomEvent('checkbox-clicked', {
+        detail: { checkbox: checkbox },
+        bubbles: true,
+        composed: true
+      }));
     });
   }
 }
