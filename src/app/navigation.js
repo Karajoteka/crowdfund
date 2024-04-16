@@ -51,7 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.remove('block');
     overlay.classList.add('hidden');
     document.body.style.overflow = 'auto';
+
+    const rewardComponentsInModal = backProjectModal.querySelectorAll('reward-component-in-modal');
+    rewardComponentsInModal.forEach(rewardComponent => {
+      const checkbox = rewardComponent.shadowRoot.querySelector('.custom-checkbox');
+      const section = checkbox.closest('section');
+      const dropdown = section.querySelector('.dropdown');
+      const hr = section.querySelector('hr');
+
+      if (checkbox.classList.contains('active')) {
+        checkbox.classList.remove('active');
+        checkbox.checked = false;
+        section.classList.remove('active-border');
+        if (dropdown) {
+          dropdown.style.visibility = 'hidden';
+          dropdown.style.height = '0';
+        }
+        if (hr) {
+          hr.style.visibility = 'hidden';
+        }
+      }
+    });
   }
+
+  overlay.addEventListener('click', hideModal);
 
   backButton.addEventListener('click', showModal);
   closeModalIcon.addEventListener('click', hideModal);

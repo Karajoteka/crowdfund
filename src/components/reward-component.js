@@ -37,7 +37,7 @@ class rewardComponent extends HTMLElement {
         <p>${this.description}</p>
         <div class="button-container">
           <p id="rewards-left">${this.rewards}<span>left</span></p>
-          <button class="${buttonClass}">${buttonText}</button>
+          <button id="select-reward" class="${buttonClass}" data-reward-id="${this.reward}">${buttonText}</button>
         </div>
       </section>
       ${this.getStyles()}
@@ -151,6 +151,26 @@ class rewardComponent extends HTMLElement {
   }
   connectedCallback() {
     this.render();
+    const selectRewardButtons = this.shadowRoot.querySelectorAll('#select-reward');
+  
+    selectRewardButtons.forEach((selectRewardButton, index) => {
+      selectRewardButton.addEventListener('click', (event) => {
+        if (selectRewardButton.textContent !== 'Out of Stock') {
+          const backProject = document.querySelector('back-project');
+          const backProjectModal = backProject.shadowRoot.querySelector('#back-project-modal');
+          backProjectModal.style.display = 'block';
+          
+          const rewardId = this.getAttribute('data-reward-id');
+          const rewardComponentsInModal = backProject.shadowRoot.querySelectorAll(`reward-component-in-modal[data-reward-id="${rewardId}"]`);
+          const checkboxInModal = rewardComponentsInModal[index].shadowRoot.querySelector('.custom-checkbox');
+          checkboxInModal.click();
+
+          const projectDescriptionComponent = document.querySelector('project-description');
+          const backButton = projectDescriptionComponent.shadowRoot.querySelector('.back-button');
+          backButton.click();
+        }
+      });
+    });
   }
 }
 customElements.define("reward-component", rewardComponent);

@@ -26,18 +26,21 @@ class backProject extends HTMLElement {
           pledge="Pledge $25 or more"
           description="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list."
           rewards="101"
+          data-reward-id="1"
         ></reward-component-in-modal>
         <reward-component-in-modal
           title="Black Edition Stand"
           pledge="Pledge $75 or more"
           description="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           rewards="64"
+          data-reward-id="2"
         ></reward-component-in-modal>
         <reward-component-in-modal
           title="Mahogamy Special Edition"
           pledge="Pledge $200 or more"
           description="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           rewards="0"
+          data-reward-id="3"
         ></reward-component-in-modal>
       </section>
       ${this.getStyles()}

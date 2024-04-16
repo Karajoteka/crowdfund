@@ -32,7 +32,7 @@ class rewardComponentInModal extends HTMLElement {
     const template = document.createElement("template");
     const sectionClass = this.rewards === '0' ? 'no-rewards' : '';
     template.innerHTML = `
-      <section class="${sectionClass}>
+      <section id="reward-component-in-modal" class="${sectionClass}" data-reward-id="${this.rewardId}">
         <div class="checkbox-title-container">
           <div class="custom-checkbox"></div>
           <div class="title-container">
@@ -110,8 +110,7 @@ class rewardComponentInModal extends HTMLElement {
         }
 
         .title-container {
-          margin-left: 50px;
-          margin-top: -20px;
+          margin-left: 30px;
         }
 
         section .pledge {
@@ -240,7 +239,7 @@ class rewardComponentInModal extends HTMLElement {
         @media (min-width: 675px) {
           .title-container {
             display: flex;
-            margin-top: -16px;
+            margin-top: 10px;
           }
 
           .title-container h3:hover {
