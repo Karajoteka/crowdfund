@@ -2,6 +2,8 @@ class projectDescription extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this.clicked = false;
+    this.bookmarked = false;
   }
   static get observedAttributes() {
     return ["logo", "title", "description"];
@@ -27,7 +29,12 @@ class projectDescription extends HTMLElement {
         <div class="description-buttons">
           <button class="back-button">Back this project</button>
           <div class="bookmark-container">
-            <img class="marker" src="./images/icon-bookmark.svg" alt="Bookmark button">
+            <svg class="marker" width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <circle fill="#2F2F2F" cx="28" cy="28" r="28"/>
+                <path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/>
+              </g>
+            </svg>
             <div class="bookmark-button">Bookmark</div>
           </div>
         </div>
@@ -92,7 +99,7 @@ class projectDescription extends HTMLElement {
         .back-button {
           all: unset;
           width: 200px;
-          height: 50px;
+          height: 56px;
           font-family: 'Commissioner', sans-serif;
           background-color: var(--moderate-cyan);
           color: white;
@@ -133,7 +140,7 @@ class projectDescription extends HTMLElement {
           align-items: center;
           padding-right: 30px;
           width: 140px;
-          height: 50px;
+          height: 56px;
           border-radius: 50px;
           background-color: var(--light-grey);
           color: white;
@@ -145,13 +152,47 @@ class projectDescription extends HTMLElement {
           .marker {
             position: relative;
             right: -50px;
+            cursor: pointer;
           }
         }
       </style>
     `;
   }
+  toggleStyles(circle, path, bookmarkButton, state) {
+    const marker = this.shadowRoot.querySelector('.marker');
+    if (!state) {
+      circle.setAttribute('fill', 'hsl(176, 72%, 28%)');
+      path.setAttribute('fill', '#FFFFFF');
+      bookmarkButton.style.backgroundColor = '#F9FAFB';
+      bookmarkButton.style.color = 'var(--dark-cyan)';
+      bookmarkButton.textContent = 'Bookmarked';
+      marker.style.right = '-35px';
+      return true;
+    } else {
+      circle.setAttribute('fill', '#2F2F2F');
+      path.setAttribute('fill', '#B1B1B1');
+      bookmarkButton.style.backgroundColor = 'var(--light-grey)';
+      bookmarkButton.style.color = 'white';
+      bookmarkButton.textContent = 'Bookmark';
+      marker.style.right = '-50px';
+      return false;
+    }
+  }
   render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
+
+    const marker = this.shadowRoot.querySelector('.marker');
+    const circle = marker.querySelector('circle');
+    const path = marker.querySelector('path');
+    const bookmarkButton = this.shadowRoot.querySelector('.bookmark-button');
+
+    marker.addEventListener('click', () => {
+      this.clicked = this.toggleStyles(circle, path, bookmarkButton, this.clicked);
+    });
+
+    bookmarkButton.addEventListener('click', () => {
+      this.bookmarked = this.toggleStyles(circle, path, bookmarkButton, this.bookmarked);
+    });
   }
   connectedCallback() {
     this.render();

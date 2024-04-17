@@ -74,8 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  overlay.addEventListener('click', hideModal);
-
   backButton.addEventListener('click', showModal);
   closeModalIcon.addEventListener('click', hideModal);
 
