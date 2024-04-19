@@ -58,7 +58,7 @@ class backProject extends HTMLElement {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -36%);
-          z-index: 1000;
+          z-index: 50;
           max-height: 80vh;
           overflow-y: auto;
           -ms-overflow-style: none;

@@ -51,7 +51,7 @@ class rewardComponentInModal extends HTMLElement {
               <input id="amount-input" type="number" min="0" value="${this.pledgeAmount}"></input>
               <span class="dollar-sign">$</span>
             </div>
-            <button>Continue</button>
+            <button class="continue-button">Continue</button>
           </div>
         </div>
       </section>
@@ -363,6 +363,28 @@ class rewardComponentInModal extends HTMLElement {
         amountInput.value = 0;
       }
     });
+
+    const continueButton = this.shadowRoot.querySelector('.continue-button');
+    continueButton.addEventListener('click', () => {
+      this.dispatchEvent(new CustomEvent('continue-button-clicked', {
+        bubbles: true,
+        composed: true
+      }));
+    });
   }
+
+  // showThanksMessage() {
+  //   const thanksMessageComponent = document.querySelector('thanks-message');
+  //   const thanksMessage = thanksMessageComponent.shadowRoot.querySelector('.thanks-message-container');
+  //   thanksMessage.style.setProperty('display', 'flex', 'important');
+
+  //   const backProjectComponent = document.querySelector('back-project');
+  //   backProjectComponent.style.display = 'none';
+    
+  //   const overlay = document.getElementById('overlay');
+  //   overlay.classList.remove('hidden');
+  //   overlay.classList.add('block');
+    
+  // }
 }
 customElements.define("reward-component-in-modal", rewardComponentInModal);

@@ -10,5 +10,7 @@ import './components/back-project.js';
 import './components/reward-component-in-modal.js';
 import './components/pledge-with-no-reward.js';
 
+import './components/thanks-message.js';
+
 import './app/navigation.js';
 

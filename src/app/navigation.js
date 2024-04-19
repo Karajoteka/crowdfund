@@ -1,3 +1,37 @@
+function showThanksMessage() {
+  console.log('showTanksMessage is running');
+  const thanksMessageComponent = document.querySelector('thanks-message');
+  console.log(thanksMessageComponent);
+  const thanksMessage = thanksMessageComponent.shadowRoot.querySelector('.thanks-message-container');
+  console.log(thanksMessage);
+  thanksMessage.style.setProperty('display', 'flex', 'important');
+  thanksMessage.style.position = 'fixed';
+  thanksMessage.style.top = '50%';
+  thanksMessage.style.left = '50%';
+  thanksMessage.style.transform = 'translate(-50%, -50%)';
+  const backProjectComponent = document.querySelector('back-project');
+  backProjectComponent.style.display = 'none';
+  const overlay = document.getElementById('overlay');
+  overlay.classList.remove('hidden');
+  overlay.classList.add('block');
+  document.body.style.overflow = 'hidden';
+}
+
+function setupRewardComponents() {
+  const backProjectComponent = document.querySelector('back-project');
+  const backProjectModal = backProjectComponent.shadowRoot.querySelector('#back-project-modal');
+  const rewardComponentsInModal = backProjectModal.querySelectorAll('reward-component-in-modal');
+
+  rewardComponentsInModal.forEach(rewardComponent => {
+    const continueButton = rewardComponent.shadowRoot.querySelector('.continue-button');
+    if (!continueButton) {
+      console.error('.continue-button not found in reward-component-in-modal');
+      return;
+    }
+    continueButton.addEventListener('click', showThanksMessage);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // open/close menu and switch icon
   const menuComponent = document.querySelector('menu-component');
@@ -10,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const backProjectComponent = document.querySelector('back-project');
   const backProjectModal = backProjectComponent.shadowRoot.querySelector('#back-project-modal');
   const closeModalIcon = backProjectComponent.shadowRoot.querySelector('#close-modal-icon');
+
+  document.addEventListener('continue-button-clicked', showThanksMessage);
 
   hamburgerIcon.addEventListener('click', () => {
     menu.style.display = 'block';
@@ -134,4 +170,5 @@ document.addEventListener('checkbox-clicked', (event) => {
   if (clickedHr) {
     clickedHr.style.visibility = 'visible';
   }
+  setupRewardComponents();
 });
