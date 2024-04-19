@@ -25,7 +25,7 @@ class thanksMessage extends HTMLElement {
           position: relative;
           top: -1700px;
           transform: none;
-          width: 86%;
+          width: 100px;
           max-width: 500px;
           background-color: white;
           margin: 0 auto;
@@ -100,8 +100,18 @@ class thanksMessage extends HTMLElement {
   render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
+  closeThanksMessage() {
+    const thanksMessageContainer = this.shadowRoot.querySelector('.thanks-message-container');
+    thanksMessageContainer.style.display = 'none';
+    const overlay = document.getElementById('overlay');
+    overlay.classList.remove('block');
+    overlay.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
   connectedCallback() {
     this.render();
+    const finishButton = this.shadowRoot.querySelector('.finish-button');
+    finishButton.addEventListener('click', () => this.closeThanksMessage());
   }
 }
 customElements.define("thanks-message", thanksMessage);

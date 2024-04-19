@@ -7,8 +7,10 @@ function showThanksMessage() {
   thanksMessage.style.setProperty('display', 'flex', 'important');
   thanksMessage.style.position = 'fixed';
   thanksMessage.style.top = '50%';
-  thanksMessage.style.left = '50%';
-  thanksMessage.style.transform = 'translate(-50%, -50%)';
+  thanksMessage.style.transform = 'translate(0, -50%)';
+  thanksMessage.style.width = '80%';
+  thanksMessage.style.maxWidth = '400px';
+  thanksMessage.style.boxSizing = 'border-box';
   const backProjectComponent = document.querySelector('back-project');
   backProjectComponent.style.display = 'none';
   const overlay = document.getElementById('overlay');
