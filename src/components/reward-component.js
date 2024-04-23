@@ -142,6 +142,11 @@ class rewardComponent extends HTMLElement {
             cursor: pointer;
             background-color: var(--dark-cyan);
           }
+
+          .no-rewards button:hover, .no-rewards:hover button {
+            cursor: default;
+            background-color: var(--dark-grey);
+          }
         }
       </style>
     `;

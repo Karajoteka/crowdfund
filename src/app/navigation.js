@@ -1,3 +1,46 @@
+function showModal() {
+  const backProjectComponent = document.querySelector('back-project');
+  const backProjectModal = backProjectComponent.shadowRoot.querySelector('#back-project-modal');
+  const overlay = document.getElementById('overlay');
+  backProjectModal.style.display = 'block';
+  overlay.classList.remove('hidden');
+  overlay.classList.add('block');
+  document.body.style.overflow = 'hidden';
+}
+
+function resetModal() {
+  const backProjectComponent = document.querySelector('back-project');
+  const backProjectModal = backProjectComponent.shadowRoot.querySelector('#back-project-modal');
+  let rewardComponentsInModal;
+
+  if (backProjectModal.shadowRoot) {
+    rewardComponentsInModal = backProjectModal.shadowRoot.querySelectorAll('#reward-component-in-modal');
+  } else {
+    rewardComponentsInModal = backProjectModal.querySelectorAll('#reward-component-in-modal');
+  }
+
+  backProjectModal.style.display = 'none';
+  
+  if (rewardComponentsInModal.length > 0) {
+    rewardComponentsInModal.forEach(rewardComponent => {
+      rewardComponent.reset();
+    });
+  }
+
+  const projectDescriptionComponent = document.querySelector('project-description');
+  const backButton = projectDescriptionComponent.shadowRoot.querySelector('.back-button');
+  backButton.addEventListener('click', showModal);
+
+  const aboutProjectComponent = document.querySelector('about-project');
+  const rewardComponents = aboutProjectComponent.shadowRoot.querySelectorAll('reward-component');
+  rewardComponents.forEach(rewardComponent => {
+    const selectRewardButton = rewardComponent.shadowRoot.querySelector('#select-reward');
+    selectRewardButton.addEventListener('click', showModal);
+  });
+}
+
+window.resetModal = resetModal;
+
 function showThanksMessage() {
   console.log('showTanksMessage is running');
   const thanksMessageComponent = document.querySelector('thanks-message');
@@ -77,12 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function showModal() {
-    backProjectModal.style.display = 'block';
-    overlay.classList.remove('hidden');
-    overlay.classList.add('block');
-    document.body.style.overflow = 'hidden';
-  }
+  // function showModal() {
+  //   backProjectModal.style.display = 'block';
+  //   overlay.classList.remove('hidden');
+  //   overlay.classList.add('block');
+  //   document.body.style.overflow = 'hidden';
+  // }
 
   function hideModal() {
     backProjectModal.style.display = 'none';

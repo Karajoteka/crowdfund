@@ -107,11 +107,15 @@ class thanksMessage extends HTMLElement {
     overlay.classList.remove('block');
     overlay.classList.add('hidden');
     document.body.style.overflow = 'auto';
+    window.resetModal();
   }
   connectedCallback() {
     this.render();
     const finishButton = this.shadowRoot.querySelector('.finish-button');
-    finishButton.addEventListener('click', () => this.closeThanksMessage());
+    finishButton.addEventListener('click', () => {
+      this.closeThanksMessage();
+      location.reload();
+    });
   }
 }
 customElements.define("thanks-message", thanksMessage);

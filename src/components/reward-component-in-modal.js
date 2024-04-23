@@ -372,19 +372,5 @@ class rewardComponentInModal extends HTMLElement {
       }));
     });
   }
-
-  // showThanksMessage() {
-  //   const thanksMessageComponent = document.querySelector('thanks-message');
-  //   const thanksMessage = thanksMessageComponent.shadowRoot.querySelector('.thanks-message-container');
-  //   thanksMessage.style.setProperty('display', 'flex', 'important');
-
-  //   const backProjectComponent = document.querySelector('back-project');
-  //   backProjectComponent.style.display = 'none';
-    
-  //   const overlay = document.getElementById('overlay');
-  //   overlay.classList.remove('hidden');
-  //   overlay.classList.add('block');
-    
-  // }
 }
 customElements.define("reward-component-in-modal", rewardComponentInModal);
