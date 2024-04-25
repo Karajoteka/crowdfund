@@ -55,11 +55,11 @@ class backProject extends HTMLElement {
         #back-project-modal {
           display: none;
           position: fixed;
-          top: 50%;
+          top: 40%;
           left: 50%;
           transform: translate(-50%, -36%);
           z-index: 50;
-          max-height: 80vh;
+          max-height: 90vh;
           overflow-y: auto;
           -ms-overflow-style: none;
           scrollbar-width: none;
